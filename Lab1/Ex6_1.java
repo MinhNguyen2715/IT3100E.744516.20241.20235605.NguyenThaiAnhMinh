@@ -7,10 +7,10 @@ public class Ex6_1 {
                 "Do you want to change to the first class ticket?");
 
 //        Customize button
-
+//
 //        String[] options = {"I do",
 //                "I don't"};
-//        int n = JOptionPane.showOptionDialog(null,
+//        int option = JOptionPane.showOptionDialog(null,
 //                "Do you want to change to the first class ticket?",
 //                "Confirmation",
 //                JOptionPane.YES_NO_OPTION,
