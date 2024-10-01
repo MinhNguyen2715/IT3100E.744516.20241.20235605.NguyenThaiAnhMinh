@@ -1,0 +1,3 @@
+Question 6.1:
+- If users click on "Cancel", the pop-up window shows that the users clicked on "No" option.
+- To customize the options to users, we use JOptionPane.showOptionDialog to pass in customize answers to the button.
