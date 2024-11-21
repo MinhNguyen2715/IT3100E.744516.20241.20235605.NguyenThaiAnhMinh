@@ -8,6 +8,7 @@ public class DigitalVideoDisc {
 
     private static int nbDigitalVideoDiscs = 0;
 
+
     public String getTitle() {
         return title;
     }
@@ -59,6 +60,10 @@ public class DigitalVideoDisc {
         this.cost = cost;
         nbDigitalVideoDiscs++;
         this.id = nbDigitalVideoDiscs;
+
     }
 
+    public boolean isMatch(String title){
+        return this.title.contains(title);
+    }
 }
