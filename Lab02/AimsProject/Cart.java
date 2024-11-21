@@ -1,9 +1,9 @@
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    public DigitalVideoDisc itemsOrdered[] =
+    private DigitalVideoDisc itemsOrdered[] =
             new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 
-    public int qtyOrdered = 0;
+    private int qtyOrdered = 0;
 
     public void addDigitalVideoDisc(DigitalVideoDisc disc){
         if (qtyOrdered == MAX_NUMBERS_ORDERED){
@@ -12,53 +12,11 @@ public class Cart {
 
         else {
             itemsOrdered[qtyOrdered] = disc;
-            qtyOrdered ++;
+            qtyOrdered += 1;
 
             System.out.println("The disc has been added!");
             if (qtyOrdered == MAX_NUMBERS_ORDERED){
                 System.out.println("The cart is full!");
-            }
-        }
-    }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
-        if (qtyOrdered == MAX_NUMBERS_ORDERED){
-            System.out.println("The cart is full!");
-        }
-        else{
-            int n = dvdList.length;
-            for (int i = 0; i < n; i++){
-                itemsOrdered[qtyOrdered] = dvdList[i];
-                qtyOrdered ++;
-
-                System.out.println("The #"+(i+1)+" disc has been added!");
-                if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                    System.out.println("The cart is full!");
-                    break;
-                }
-            }
-        }
-    }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
-        if (qtyOrdered == MAX_NUMBERS_ORDERED){
-            System.out.println("The cart is full!");
-        }
-
-        else {
-            itemsOrdered[qtyOrdered] = dvd1;
-            qtyOrdered ++;
-            System.out.println("The first disc has been added");
-            if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                System.out.println("The cart is full!");
-            }
-            else {
-                itemsOrdered[qtyOrdered] = dvd1;
-                qtyOrdered ++;
-                System.out.println("The second disc has been added");
-                if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                    System.out.println("The cart is full!");
-                }
             }
         }
     }
@@ -86,3 +44,12 @@ public class Cart {
             System.out.println("The disc is not in the cart!");
         }
     }
+
+    public float totalCost(){
+        float cost = 0;
+        for (int i = 0; i < qtyOrdered; i++){
+            cost += itemsOrdered[i].getCost();
+        }
+        return cost;
+    }
+}
