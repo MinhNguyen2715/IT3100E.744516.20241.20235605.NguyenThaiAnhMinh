@@ -64,4 +64,10 @@ public class DigitalVideoDisc {
         nbDigitalVideoDiscs++;
         this.id = nbDigitalVideoDiscs;
     }
+
+    @Override
+    public String toString() {
+        return this.id+". DVD - "+this.title+" - "+this.category+" - "
+                +this.director+" - "+this.length+": "+this.cost+"$";
+    }
 }
