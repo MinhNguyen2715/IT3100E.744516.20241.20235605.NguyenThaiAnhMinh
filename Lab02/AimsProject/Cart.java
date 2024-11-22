@@ -104,5 +104,27 @@ public class Cart {
         System.out.println("Total cost: "+this.totalCost());
         System.out.println("***************************************************");
     }
+
+    public void searchDisc(int id){
+        if(id > qtyOrdered){
+            System.out.println("No match disc is found!");
+        }
+        else {
+            System.out.println(itemsOrdered[id].toString());
+        }
+    }
+
+    public void searchDisc(String title){
+        boolean check = false;
+        for(int i=0;i<qtyOrdered;i++){
+            if (itemsOrdered[i].isMatch(title)){
+                check = true;
+                System.out.println(itemsOrdered[i].toString());
+            }
+        }
+        if(!check){
+            System.out.println("No match disc is found!");
+        }
+    }
 }
 
