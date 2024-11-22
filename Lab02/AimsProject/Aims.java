@@ -15,6 +15,7 @@ public class Aims {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Animation", "Aladin", 18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
 
+
         // Print total cost of the items in the cart
         System.out.print("The total cost is: ");
         System.out.println(anOrder.totalCost());
