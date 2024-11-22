@@ -110,7 +110,7 @@ public class Cart {
             System.out.println("No match disc is found!");
         }
         else {
-            System.out.println(itemsOrdered[id].toString());
+            System.out.println(itemsOrdered[id-1].toString());
         }
     }
 
