@@ -70,4 +70,9 @@ public class DigitalVideoDisc {
         return this.id+". DVD - "+this.title+" - "+this.category+" - "
                 +this.director+" - "+this.length+": "+this.cost+"$";
     }
+
+    public boolean isMatch(String title){
+        return this.title.contains(title);
+    }
+
 }
