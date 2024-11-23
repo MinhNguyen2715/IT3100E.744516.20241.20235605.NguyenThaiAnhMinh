@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class GarbageCreator {
     public static void main(String[] args) throws IOException {
-        String filePath = "AimsProject/src/hust/soict/cybersec/garbage/text.txt";
+        String filePath = "OtherProject/hust/soict/cybersec/garbage/text.txt";
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -33,7 +33,7 @@ public class GarbageCreator {
 
         //Read String without StringBuffer
 
-        String filename = "AimsProject/src/hust/soict/cybersec/garbage/text.txt";
+        String filename = "OtherProject/hust/soict/cybersec/garbage/text.txt";
         byte[] inputBytes = {0};
         long startTime, endTime;
 
