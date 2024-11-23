@@ -1,5 +1,3 @@
-package Lab1;
-
 import javax.swing.JOptionPane;
 public class Ex2_2_5 {
     public static void main(String[] args) {
