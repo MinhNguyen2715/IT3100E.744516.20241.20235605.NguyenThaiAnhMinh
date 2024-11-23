@@ -1,0 +1,3 @@
+Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
+Answer: JAVA is a pass-by-value programming language since the method parameter values are copied to another variable and then the copied object is passed to the method
+In the example: when the swap() function is called, a copy of the object is passed into the parameter, which is why the title of those objects are not changed.
