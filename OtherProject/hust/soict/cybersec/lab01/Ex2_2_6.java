@@ -1,5 +1,3 @@
-package Lab1;
-
 import javax.swing.*;
 import java.lang.Math;
 
