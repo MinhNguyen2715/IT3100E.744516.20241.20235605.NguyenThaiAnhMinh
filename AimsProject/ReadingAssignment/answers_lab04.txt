@@ -1,0 +1,37 @@
+Suppose we are taking this Comparable interface approach.
+- What class should implement the Comparable interface?
+- In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+- Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+
+- The Media class should implement the Comparable interface
+- Implement:
+    @Override
+    public int compareTo(Media other) {
+        int costComparison = Double.compare(other.getCost(), this.getCost());
+        if (costComparison != 0) {
+            return costComparison;
+        }
+
+        return this.getTitle().compareTo(other.getTitle());
+    }
+
+- We can not have 2 ordering rules of item since we can not override this method twice in the same class
+- We will override compareTo() method in DVDs:
+    @Override
+    public int compareTo(Media other) {
+        int titleComparison = this.getTitle().compareTo(other.getTitle())
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+
+        int lengthComparison = Double.compare(other.getLength(), this.getLength());
+            if (lengthComparison != 0) {
+                return lengthComparison;
+        }
+
+        return Double.compare(this.getCost(), other.getCost());
+    }
+
+
+

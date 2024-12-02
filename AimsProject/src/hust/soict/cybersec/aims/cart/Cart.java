@@ -1,96 +1,47 @@
+package cart;
+
+import media.Media;
+import java.util.ArrayList;
+
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private DigitalVideoDisc itemsOrdered[] =
-            new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 
-    private int qtyOrdered = 0;
+    public ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
 
-    public void addDigitalVideoDisc(DigitalVideoDisc disc){
-        if (qtyOrdered == MAX_NUMBERS_ORDERED){
+    public void addMedia(Media media){
+        if(itemsOrdered.size() == 20){
             System.out.println("The cart is full!");
         }
-
         else {
-            itemsOrdered[qtyOrdered] = disc;
-            qtyOrdered += 1;
-
-            System.out.println("The disc has been added!");
-            if (qtyOrdered == MAX_NUMBERS_ORDERED){
+            itemsOrdered.add(media);
+            System.out.println("The item is added successfully!");
+            if(itemsOrdered.size() == 20){
                 System.out.println("The cart is full!");
             }
         }
     }
 
-    public void removeDigitalVideoDisc(DigitalVideoDisc disc){
-        boolean check = false;
-        for(int i = 0; i < MAX_NUMBERS_ORDERED; i++){
-            if (itemsOrdered[i] == disc){
-                DigitalVideoDisc tmp[] = itemsOrdered.clone();
-
-                for (int j = 0, k = 0; j< qtyOrdered; j++){
-                    if (itemsOrdered[j] != disc){
-                        tmp[k] = itemsOrdered[j];
-                        k++;
-                    }
-                }
-                itemsOrdered = tmp.clone();
-                System.out.println("The disc has been removed!");
-                qtyOrdered--;
-                check = true;
-                break;
-            }
+    public void removeMedia(Media media){
+        if(!itemsOrdered.contains(media)){
+            System.out.println("This item is not in the cart!");
         }
-        if(!check){
-            System.out.println("The disc is not in the cart!");
-        }
-    }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
-        if (qtyOrdered == MAX_NUMBERS_ORDERED){
-            System.out.println("The cart is full!");
-        }
-        else{
-            int n = dvdList.length;
-            for (int i = 0; i < n; i++){
-                itemsOrdered[qtyOrdered] = dvdList[i];
-                qtyOrdered ++;
-
-                System.out.println("The #"+(i+1)+" disc has been added!");
-                if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                    System.out.println("The cart is full!");
-                    break;
-                }
-            }
-        }
-    }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
-        if (qtyOrdered == MAX_NUMBERS_ORDERED){
-            System.out.println("The cart is full!");
-        }
-
         else {
-            itemsOrdered[qtyOrdered] = dvd1;
-            qtyOrdered ++;
-            System.out.println("The first disc has been added");
-            if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                System.out.println("The cart is full!");
-            }
-            else {
-                itemsOrdered[qtyOrdered] = dvd1;
-                qtyOrdered ++;
-                System.out.println("The second disc has been added");
-                if (qtyOrdered == MAX_NUMBERS_ORDERED){
-                    System.out.println("The cart is full!");
-                }
-            }
+            itemsOrdered.remove(media);
+            System.out.println("The item is removed successfully!");
         }
+    }
+
+    public void removeCart(){
+        itemsOrdered.clear();
     }
 
     public float totalCost(){
         float cost = 0;
-        for (int i = 0; i < qtyOrdered; i++){
-            cost += itemsOrdered[i].getCost();
+        for (Media x : itemsOrdered){
+            cost += x.getCost();
         }
         return cost;
     }
@@ -98,33 +49,37 @@ public class Cart {
     public void print(){
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
-        for (int i=0; i<qtyOrdered;i++){
-            System.out.println(itemsOrdered[i].toString());
+        for (Media x : itemsOrdered){
+            System.out.println(x.toString());
         }
         System.out.println("Total cost: "+this.totalCost());
         System.out.println("***************************************************");
     }
 
-    public void searchDisc(int id){
-        if(id > qtyOrdered){
-            System.out.println("No match disc is found!");
+    public Media searchMedia(int id){
+        if(id > itemsOrdered.size()){
+            System.out.println("No match media is found!");
+            return null;
         }
         else {
-            System.out.println(itemsOrdered[id-1].toString());
+            System.out.println(itemsOrdered.get(id - 1).toString());
+            return itemsOrdered.get(id-1);
         }
     }
 
-    public void searchDisc(String title){
+    public Media searchMedia(String title){
         boolean check = false;
-        for(int i=0;i<qtyOrdered;i++){
-            if (itemsOrdered[i].isMatch(title)){
+        for(Media x : itemsOrdered){
+            if (x.getTitle().equals(title)){
                 check = true;
-                System.out.println(itemsOrdered[i].toString());
+                System.out.println(x.toString());
+                return x;
             }
         }
         if(!check){
-            System.out.println("No match disc is found!");
+            System.out.println("No match media is found!");
         }
+        return null;
     }
 }
 
