@@ -1,6 +1,7 @@
 package media;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public abstract class Media {
     private int id;
@@ -61,16 +62,17 @@ public abstract class Media {
     @Override
     public boolean equals(Object o){
         if (this == o) {
-            return true;
+            return true; // Same reference
         }
 
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || !(o instanceof Media)) {
             return false;
         }
 
         Media media = (Media) o;
-        return this.getTitle().equals(media.getTitle());
+
+//        Objects.equals(null, "title")-> returns false
+//        Objects.equals(null, null) → returns true
+        return Objects.equals(this.getTitle(), media.getTitle());
     }
-
-
 }

@@ -1,19 +1,24 @@
 package cart;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import media.Media;
+
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
-    public ArrayList<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 
-    public void addMedia(Media media){
-        if(itemsOrdered.size() == 20){
-            System.out.println("The cart is full!");
+    public void addMedia(Media media) throws LimitExceededException {
+        if(itemsOrdered.size() >= MAX_NUMBERS_ORDERED){
+            throw new LimitExceededException("The cart is full!");
         }
         else {
             itemsOrdered.add(media);

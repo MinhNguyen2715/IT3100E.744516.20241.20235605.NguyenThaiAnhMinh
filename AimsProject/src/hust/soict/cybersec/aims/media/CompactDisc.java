@@ -1,5 +1,7 @@
 package media;
 
+import exception.PlayerException;
+
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable{
@@ -46,14 +48,20 @@ public class CompactDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play() {
-        System.out.println("Artist: " + this.artist);
-        int cnt = 1;
-        for(Track x : tracks){
-            System.out.println(cnt+".");
-            System.out.println("Playing DVD: " + x.getTitle());
-            System.out.println("DVD length: " + x.getLength());
-            cnt++;
+    public void play() throws PlayerException {
+        if(this.getLength() > 0) {
+                java.util.Iterator iter = tracks.iterator();
+                Track nextTrack;
+                while (iter.hasNext()) {
+                    nextTrack = (Track) iter.next();
+                    try {
+                        nextTrack.play();
+                    } catch (PlayerException e){
+                        throw new PlayerException("ERROR: DVD length is non-positive!");
+                    }
+                }
+        } else {
+            throw new PlayerException("ERROR: CD length is non-positive!");
         }
     }
 }

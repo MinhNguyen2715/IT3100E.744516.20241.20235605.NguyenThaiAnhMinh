@@ -6,6 +6,10 @@ import java.util.ArrayList;
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void addMedia(Media media){
         if(itemsInStore.contains(media)){
             System.out.println("The item has been added to the store before!");
